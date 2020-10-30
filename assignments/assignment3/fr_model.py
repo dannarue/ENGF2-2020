@@ -42,9 +42,13 @@ class RiverObject():
 class Log(RiverObject):
     def __init__(self, x, y, width, dir, speed):
         RiverObject.__init__(self, x, y, width, dir, speed)
+        self.sunk = False
 
     def is_log(self):
         return True
+
+    def is_turtle(self):
+        return False
         
 class Turtle(RiverObject):
     def __init__(self, x, y, width, dir, speed):
@@ -53,6 +57,9 @@ class Turtle(RiverObject):
 
     def is_log(self):
         return False
+
+    def is_turtle(self):
+        return True
 
     def is_sunk(self):
         return self.sunk;
@@ -102,6 +109,7 @@ class Frog():
         self.y = y
         self.direction = Direction.UP
         self.log = None #we're not on a log yet
+        self.turtle = None
         self.moving = False #we're not moving
 
     def get_position(self):
@@ -116,6 +124,9 @@ class Frog():
     ''' which log are we on, or None if we're not on a log '''
     def on_log(self):
         return self.log
+
+    def on_turtle(self):
+        return self.turtle
 
     ''' we're on a log.  Move along with it. '''
     def move_with(self, log):

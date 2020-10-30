@@ -150,6 +150,7 @@ class FrogView(GameObjectView):
         self.dead = False
         self.canvas.delete(self.items[0])
         self.items.clear()
+        self.frog.reset_position()
         self.draw()
 
 
